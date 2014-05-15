@@ -19,4 +19,26 @@ module Enums
   OSDS_TU23 OSDS_TU26 OSDS_TU27 OSDS_TU28 OSDS_TU29 OSDS_TU30
   OSDS_TU31 OSDS_TU32 OSDS_TU33)
 
+  VIEWS = %w(front left back right)
+
+  ITEMS = {
+      cuffs: {
+          type: %w(round angle big_round big_angle square french),
+          sub_type: %w(slim inner)
+      },
+      collar: {
+          type: %w(regular low_semi_wide wide_spread cut_away big_round stand),
+          sub_type: ["", "inner"]
+      },
+      sleeves: {
+          type: %w(long shirt)
+      },
+      base: {
+          type: %w(base_slim base_plucket_inner_slim)
+      },
+      buttons: {
+          type: %w(white purple brown gray darkgray winered saxeblue pink navy)
+      }
+  }
+
 end
