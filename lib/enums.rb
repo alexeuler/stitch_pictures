@@ -31,14 +31,35 @@ module Enums
           sub_type: ["", "inner"]
       },
       sleeves: {
-          type: %w(long shirt)
+          type: %w(long short),
+          sub_type: ["slim"]
       },
       base: {
-          type: %w(base_slim base_plucket_inner_slim)
+          type: %w(slim placket_inner_slim),
+          sub_type: [""]
       },
       buttons: {
-          type: %w(white purple brown gray darkgray winered saxeblue pink navy)
+          type: %w(white purple brown gray darkgray winered saxeblue pink navy),
+          sub_type: [""]
       }
   }
 
+  class Items
+    include Enumerable
+
+    def initialize(item)
+      @item = item.to_sym
+      @hash = ITEMS[@item]
+    end
+
+    def each(&block)
+      @hash[:type].each do |type|
+        @hash[:sub_type].each do |sub_type|
+          res = "#{@item}_#{type}"
+          res += "_#{sub_type}" unless sub_type.empty?
+          block.call(res)
+        end
+      end
+    end
+  end
 end

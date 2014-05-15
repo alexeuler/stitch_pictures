@@ -1,3 +1,4 @@
 require_relative "../lib/enums"
 
-p Enums::ITEMS[:cuffs][:type]
+items = Enums::Items.new("cuffs")
+items.each {|item| p item}
