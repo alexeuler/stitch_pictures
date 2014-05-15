@@ -38,10 +38,10 @@ module Enums
           type: %w(slim placket_inner_slim),
           sub_type: [""]
       },
-      buttons: {
-          type: %w(white purple brown gray darkgray winered saxeblue pink navy),
-          sub_type: [""]
-      }
+      # buttons: {
+      #     type: %w(white purple brown gray darkgray winered saxeblue pink navy),
+      #     sub_type: [""]
+      # }
   }
 
   class Items
@@ -56,7 +56,8 @@ module Enums
       @hash[:type].each do |type|
         @hash[:sub_type].each do |sub_type|
           res = "#{@item}_#{type}"
-          res += "_#{sub_type}" unless sub_type.empty?
+          res += "_#{sub_type}" unless (sub_type.empty? ||
+              type == "french" && sub_type == "slim") #exception of rule
           block.call(res)
         end
       end

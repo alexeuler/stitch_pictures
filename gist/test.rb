@@ -1,4 +1,6 @@
-require_relative "../lib/enums"
+require_relative "../lib/requests_queue"
 
-items = Enums::Items.new("cuffs")
-items.each {|item| p item}
+q = RequestsQueue.new
+while not q.empty?
+  p q.pop[:url]
+end
