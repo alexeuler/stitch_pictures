@@ -38,11 +38,26 @@ module Enums
           type: %w(slim placket_inner_slim),
           sub_type: [""]
       },
-      # buttons: {
-      #     type: %w(white purple brown gray darkgray winered saxeblue pink navy),
-      #     sub_type: [""]
-      # }
   }
+
+  BUTTONS = {
+      color: %w(white purple brown gray darkgray winered saxeblue pink navy),
+      type: %w(cuffs collar_one_button base_slim)
+  }
+
+  class Buttons
+    include Enumerable
+
+    def each(&block)
+      VIEWS.each do |view|
+        BUTTONS[:color].each do |color|
+          BUTTONS[:type].each do |type|
+            block.call("buttons/#{color}/#{view}/buttons_#{type}")
+          end
+        end
+      end
+    end
+  end
 
   class Items
     include Enumerable

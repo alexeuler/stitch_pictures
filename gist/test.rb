@@ -5,7 +5,7 @@ q = RequestsQueue.new
 # item = q.pop
 # item[:url].gsub!("png", "pgn")
 threads = []
-5.times do
+1.times do
   threads << Thread.new do
     fetcher = Fetcher.new(queue: q)
     fetcher.fetch_all

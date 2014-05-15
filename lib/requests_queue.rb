@@ -8,6 +8,14 @@ class RequestsQueue
 
   def initialize
     @queue = Queue.new
+
+    #adding buttons
+    buttons = Enums::Buttons.new
+    buttons.each do |button|
+      @queue.push button
+    end
+
+    #adding items
     Enums::VIEWS.each do |view|
       Enums::FABRICS.each do |fabric|
         Enums::ITEMS.keys.each do |key|
@@ -17,7 +25,9 @@ class RequestsQueue
           end
         end
       end
+
     end
+
 
   end
 
