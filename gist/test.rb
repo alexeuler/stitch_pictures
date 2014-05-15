@@ -1,6 +1,7 @@
 require_relative "../lib/requests_queue"
+require_relative "../lib/fetcher"
 
 q = RequestsQueue.new
-while not q.empty?
-  p q.pop[:url]
-end
+item = q.pop
+# item[:url].gsub!("png", "pgn")
+Fetcher.fetch(item)

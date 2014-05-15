@@ -27,7 +27,7 @@ class RequestsQueue
 
   def pop
     item = @queue.pop
-    {url: PREFIX + item + POSTFIX, filename: item+".png"}
+    {url: PREFIX + item + POSTFIX, filename: item.gsub("/", "_")+".png"}
   end
 
   def empty?
